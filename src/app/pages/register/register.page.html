@@ -1,0 +1,104 @@
+<ion-content padding class="login auth-page">
+
+  <div class="auth-content">
+    <div padding-horizontal text-center>
+      <div class="logo"></div>
+    </div>
+    <form [formGroup]="onRegisterForm" class="list-form">
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="contact" item-start></ion-icon>
+          Nom et Prenom
+        </ion-label>
+        <ion-input color="secondary" type="text" formControlName="fullName"></ion-input>
+      </ion-item>
+      <p ion-text class="text08" *ngIf="onRegisterForm.get('fullName').touched && onRegisterForm.get('fullName').hasError('required')">
+        <ion-text color="warning">
+          *champ obligatoire
+        </ion-text>
+      </p>
+
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="mail" item-start></ion-icon>
+          Email
+        </ion-label>
+        <ion-input color="secondary" type="email" formControlName="email" ></ion-input>
+      </ion-item>
+      <p ion-text class="text08" *ngIf=" onRegisterForm.get('email').touched && onRegisterForm.get('email').hasError('required')">
+        <ion-text color="warning">
+          *champ obligatoire
+        </ion-text>
+      </p>
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="lock" item-start></ion-icon>
+          Mot de passe
+        </ion-label>
+        <ion-input color="secondary" type="password" formControlName="password" ></ion-input>
+      </ion-item>
+      <p ion-text class="text08" *ngIf="onRegisterForm.get('password').touched && onRegisterForm.get('password').hasError('required')">
+        <ion-text color="warning">
+          *champ obligatoire
+        </ion-text>
+      </p>
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="calendar" item-start></ion-icon>
+          Date de naissance
+        </ion-label>
+          <ion-datetime style="color:white" :pickerOptions="customPickerOptions"  formControlName="birthdate"></ion-datetime>
+        </ion-item>    
+          <p ion-text class="text08" *ngIf="onRegisterForm.get('birthdate').touched && onRegisterForm.get('birthdate').hasError('required')">
+        <ion-text color="warning">
+          *champ obligatoire
+        </ion-text>
+      </p>
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="call" item-start></ion-icon>
+          Numero de téléphone
+        </ion-label>
+        <ion-input color="secondary" type="tel" formControlName="phone" ></ion-input>
+      </ion-item>
+      <p ion-text class="text08" *ngIf="onRegisterForm.get('phone').touched && onRegisterForm.get('phone').hasError('required')">
+        <ion-text color="warning">
+          *champ obligatoire
+        </ion-text>
+      </p>
+    </form>
+    <div margin-top>
+      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="inscrit(onRegisterForm)"  [disabled]="!onRegisterForm.valid"
+        tappable>
+        <ion-icon name="log-in"></ion-icon>
+        S'inscrire
+      </ion-button>
+      <p text-center>
+        <ion-text color="light">
+          Ou s'inscrire avec:
+        </ion-text>
+      </p>
+      <ion-grid class="btn-group">
+        <ion-row>
+          <ion-col>
+            <ion-button shape="round" expand="full" color="secondary">
+              <ion-icon slot="icon-only" name="logo-facebook"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col>        
+            <ion-button shape="round" expand="full" color="secondary">
+              <ion-icon slot="icon-only" name="logo-google"></ion-icon>
+            </ion-button>
+          </ion-col> 
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div text-center margin-top>
+      <span (click)="goToLogin()" tappable>
+        <ion-text color="light">
+          <strong>J'ai déja un compte!</strong>
+        </ion-text>
+      </span>
+    </div>
+  </div>
+</ion-content>
