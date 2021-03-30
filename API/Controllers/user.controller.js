@@ -3,10 +3,10 @@ const passport = require('passport');
 const _ = require('lodash');
 var config = require('../config/config');
 const User = mongoose.model('User');
-
+var jwt = require('jsonwebtoken');
 module.exports.register = (req, res, next) => {
     var user = new User();
-    user.fullName = req.body.fullName;
+    user.fullName = req.body.fullname;
     user.email = req.body.email;
     user.birthdate = req.body.birthdate;
     user.phone = req.body.phone;

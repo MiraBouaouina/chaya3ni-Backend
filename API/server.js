@@ -7,15 +7,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
-
+const app = express();
 const rtsIndex = require('./routes/user.route');
 
-var app = express();
-
-// middleware
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
+// parse requests of content-type - application/json
+app.use(bodyParser.json())
 app.use(cors());
 app.use(passport.initialize());
+app.get('/', (req, res) => {
+    res.send("Hello World");
+  });
 app.use('/v1/api', rtsIndex);
 
 // error handler
