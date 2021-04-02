@@ -13,4 +13,6 @@ var myPassportService = require('../config/passportconfig')(passport);
 var ObjectId = require('mongoose').Types.ObjectId;
 userRoutes.post('/register', ctrlUser.register);
 userRoutes.post('/authenticate', ctrlUser.authenticate);
+userRoutes.post('/updatepwd', ctrlUser.updatepwd);
+
 module.exports = userRoutes

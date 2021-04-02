@@ -1,4 +1,3 @@
-
 require('./config/config');
 require('./models/db');
 require('./config/passportConfig');
@@ -9,6 +8,7 @@ const cors = require('cors');
 const passport = require('passport');
 const app = express();
 const rtsIndex = require('./routes/user.route');
+const rtsRide = require('./routes/ride.route');
 
 app.use(bodyParser.urlencoded({ extended: true }))
 // parse requests of content-type - application/json
@@ -17,8 +17,9 @@ app.use(cors());
 app.use(passport.initialize());
 app.get('/', (req, res) => {
     res.send("Hello World");
-  });
-app.use('/v1/api', rtsIndex);
+});
+app.use('/v1/user', rtsIndex);
+app.use('/v1/ride', rtsRide);
 
 // error handler
 app.use((err, req, res, next) => {
@@ -27,7 +28,7 @@ app.use((err, req, res, next) => {
         Object.keys(err.errors).forEach(key => valErrors.push(err.errors[key].message));
         res.status(422).send(valErrors)
     }
-    else{
+    else {
         console.log(err);
     }
 });
